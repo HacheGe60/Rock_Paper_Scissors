@@ -1,3 +1,7 @@
+let playerPoints = 0;
+let computerPoints = 0;
+let message;
+
 const getRandomNumber = () => {
     return Math.floor(Math.random() * 3) + 1;
 };
@@ -24,37 +28,44 @@ const getPlayerSelection = () => {
     return playerChoice;
 }
 
-let playerPoints = 0;
-let computerPoints = 0;
-
 function playGame() {
     if (playerPoints === 5) {
         console.log('You won the game!');
+        return;
     } else if (computerPoints === 5) {
         console.log('You lost the game!');
+        return;
+    } else {
+        const playerSelection = getPlayerSelection();
+        console.log(playerSelection);
+
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+
+        playRound(playerSelection, computerSelection);
     }
 
-    const playerSelection = getPlayerSelection();
-    console.log(playerSelection);
 
-    const computerSelection = getComputerChoice();
-    console.log(computerSelection);
-
-    playRound(playerSelection, computerSelection);
+    console.log(message);
+    console.log(`Player: ${playerPoints} Computer: ${computerPoints}`);
+    playGame();
 }
 
 function playRound(playerSelection, computerSelection) {
     console.log(playerSelection, computerSelection);
     if (playerSelection === computerSelection) {
-        return 'It\'s a tie!';
+        message = 'It\'s a tie!';
+        return message;
     } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock' || playerSelection === 'scissors' && computerSelection === 'paper') {
         playerPoints++;
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        message = `You win! ${playerSelection} beats ${computerSelection}`;
+        return message;
     } else if (playerSelection === 'rock' && computerSelection === 'paper' || playerSelection === 'paper' && computerSelection === 'scissors' || playerSelection === 'scissors' && computerSelection === 'rock') {
         computerPoints++;
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        message = `You lose! ${computerSelection} beats ${playerSelection}`;
+        return message;
     }
 }
 
-playGame();
-
+let result = playGame();
+console.log(result);
