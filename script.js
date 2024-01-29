@@ -5,10 +5,15 @@ const getRandomNumber = () => {
 const getComputerChoice = () => {
     switch (getRandomNumber()) {
         case 1:
-            return "Rock";
+            return 'Rock';
+            break;
         case 2:
-            return "Paper";
+            return 'paper';
+            break;
         case 3:
-            return "Scissors";
+            return 'Scissors';
+            break;
+        default:
+            return 'Error';
     }
-};
+}
