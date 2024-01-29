@@ -48,6 +48,7 @@ function playGame() {
 
     console.log(message);
     console.log(`Player: ${playerPoints} Computer: ${computerPoints}`);
+
     playGame();
 }
 
@@ -66,6 +67,7 @@ function playRound(playerSelection, computerSelection) {
         return message;
     }
 }
+
 
 let result = playGame();
 console.log(result);
